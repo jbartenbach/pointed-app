@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "image": "welcome-image.png",
+    "label": "welcome",
+    "title": "Short Stories the fun way",
+    "author": "Jeff Bartenbach",
+    "shortbody": "Pointed Stories is a new way to enjoy short stories. It’s quite simply a feed of the best stories, from the classics to contemporary writers.",
+    "longbody": "Pointed Stories is a new way to enjoy short stories. It’s quite simply a feed of the best stories, from the classics to contemporary writers."
+  },
+  {
+    "id": 2,
+    "label": "Short story",
+    "title": "A Great Title for the Ages",
+    "author": "John Doe",
+    "shortbody":"This is an example of a card without an image. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec viverra odio.",
+    "longbody":"This is an example of a card without an image. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec viverra odio."
+  },
+  {
+    "id": 3,
+    "label": "Short story",
+    "title": "Short Title",
+    "author": "John Doe",
+    "shortbody":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec viverra odio. Sed viverra nisl bibendum quam finibus luctus",
+    "longbody":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec viverra odio. Sed viverra nisl bibendum quam finibus luctus"
+  },
+  {
+    "id": 4,
+    "label": "Short story",
+    "title": "An Extremely Long Title with Some Overwhelmingly Long Words",
+    "author": "John Doe",
+    "shortbody":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec viverra odio. Sed viverra nisl bibendum quam finibus luctus",
+    "longbody":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec viverra odio. Sed viverra nisl bibendum quam finibus luctus"
+  }
+]
