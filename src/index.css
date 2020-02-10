@@ -11,6 +11,11 @@ body {
   font-size: 16px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #main {
      margin: 0 auto;
      max-width: 800px;
@@ -37,7 +42,7 @@ body {
 .card-image {
   height: 250px;
   border-radius: 12px 12px 0px 0px;
-  background-size: 150% auto;
+  background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
 }
@@ -61,9 +66,30 @@ body {
 .card-author {
   margin-bottom: 24px;
 }
-.card-short-body {
-  line-height: 24px;
+.body-text {
+  line-height: 28px;
   font-family: 'Open Sans', sans-serif;
+}
+
+/* StoryPage */
+#story-page-main {
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #FFFFFF;
+}
+
+#story-page-main .card-image {
+  height: 350px;
+  border-radius: 0px;
+}
+
+.page-text-container {
+  padding: 24px;
+}
+
+.story-page-no-image {
+  padding-top:18px;
+  height: 160px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -82,5 +108,11 @@ body {
   }
   .card-no-image {
     height: 48px;
+  }
+  .story-page-body {
+    box-shadow: 0px 0px 15px rgba(29, 63, 106, .15);
+  }
+  .page-text-container {
+    padding: 48px;
   }
 }

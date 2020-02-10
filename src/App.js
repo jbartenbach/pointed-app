@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import StoryListPage from './StoryListPage'
+import StoryPage from './StoryPage'
+import ScrollToTop from './components/ScrollToTop'
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+import data from './assets/data/top-stories.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <Router>
+    <div>
+      <ScrollToTop />
+      <Route exact path="/"><StoryListPage /></Route>
+      <Route path="/story/:title" component={StoryPage} />
     </div>
+    </Router>
   );
 }
 

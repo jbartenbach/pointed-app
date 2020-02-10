@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { NoHeaderImage } from './cards/noheaderimage'
 import { HeaderImage } from './cards/headerimage'
 
 
-export class Story extends React.Component {
+export class StoryCard extends React.Component {
 
   static defaultProps = {
     story: [
@@ -14,15 +15,17 @@ export class Story extends React.Component {
   render() {
     const { story } = this.props
     return (
+      <Link to={`/story/${story.title}`}>
       <section className="card">
         { story.image ? <HeaderImage imageName={story.image} /> : <NoHeaderImage /> }
         <div className="card-text-container">
           <h6>{story.label}</h6>
           <h2>{story.title}</h2>
           <p className="card-author">By {story.author}</p>
-          <p className="card-short-body">{story.shortbody}</p>
+          <p className="body-text">{story.shortbody}</p>
         </div>
       </section>
+      </Link>
     )
   }
 

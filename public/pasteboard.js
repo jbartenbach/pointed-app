@@ -1,0 +1,3 @@
+
+
+Storylist stories={data} />
