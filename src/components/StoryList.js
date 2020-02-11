@@ -18,7 +18,6 @@ class StoryList extends React.Component {
 
     return (
         <div id="main">
-          <div className="logo2"></div>
           {stories.map(
             (story, i) =>
               <StoryCard story = {story} key = {i} />

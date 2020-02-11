@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { NoHeaderImage } from './cards/noheaderimage'
 import { HeaderImage } from './cards/headerimage'
+import ReactMarkdown from 'react-markdown'
 
 
 export class StoryCard extends React.Component {
@@ -22,7 +23,7 @@ export class StoryCard extends React.Component {
           <h6>{story.label}</h6>
           <h2>{story.title}</h2>
           <p className="card-author">By {story.author}</p>
-          <p className="body-text">{story.shortbody}</p>
+          <div className="body-text"><ReactMarkdown source={story.shortbody} /></div>
         </div>
       </section>
       </Link>

@@ -1,5 +1,7 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import storyContent from './assets/data/top-stories.js'
+import ScrollToTop from './components/ScrollToTop'
 import { HeaderImage } from './components/cards/headerimage'
 
 const StoryPage = ({ match }) => {
@@ -14,13 +16,14 @@ const StoryPage = ({ match }) => {
 
   return (
     <div id="story-page-main">
+      <ScrollToTop />
       { !story.image ? hasNoImage : <HeaderImage imageName={story.image}/>}
       <div className="page-text-container">
         <h6>{story.label}</h6>
         <h2>{story.title}</h2>
         <p className="card-author">by {story.author}</p>
         {story.longbody.map((paragraph, key) => (
-          <p className="body-text" key={key}>{paragraph}</p>
+          <div className="body-text full-body" key={key}><ReactMarkdown source={paragraph} /></div>
         ))}
       </div>
     </div>
