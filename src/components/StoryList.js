@@ -11,14 +11,10 @@ class StoryList extends React.Component {
   }
 
   render() {
-
-    console.log('here');
-
     const { stories } = this.props
-
     return (
         <div id="main">
-          {stories.map(
+          { stories.map(
             (story, i) =>
               <StoryCard story = {story} key = {i} />
           )}
