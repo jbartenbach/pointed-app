@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
     background-color: #F3F8FE;
@@ -19,7 +23,7 @@ a {
 #main {
      margin: 0 auto;
      max-width: 800px;
-     padding: 24px;
+     padding: 0px 24px 32px 24px;
 }
 .logo2 {
   margin:0 auto 24px auto;
@@ -34,10 +38,13 @@ a {
   background-color: #FFF;
   border-radius: 12px;
   box-shadow: 0px 0px 15px rgba(29, 63, 106, .15);
-  margin-bottom: 32px;
+  margin-top: 32px;
+  transition: height .2s;
+  position: relative;
 }
+
 .card-no-image {
-  height: 82px;
+  height: 120px;
 }
 .card-image {
   height: 250px;
@@ -46,10 +53,12 @@ a {
   background-position: center top;
   background-repeat: no-repeat;
   margin-bottom:20px;
+  transition: height .2s;
 }
 .card-text-container {
   padding:24px;
 }
+
 .card-label, h6 {
   font-size: 14px;
   font-weight: 600;
@@ -70,6 +79,35 @@ a {
 .body-text {
   line-height: 28px;
   font-family: 'Open Sans', sans-serif;
+}
+.card-header {
+  position: fixed;
+  top: 0px;
+  width:100%;
+  max-width: 800px;
+  height:60px;
+}
+.title-bar {
+  position: absolute;
+  top:-60px;
+  background-color: #FFFFFF;
+  height:100%;
+  width: 100%;
+  line-height: 60px;
+  font-weight: 600;
+  padding-left: 24px;
+  box-shadow: 0px 0px 15px rgba(29, 63, 106, .25);
+  transition: top .2s;
+
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width:30px;
+  height:30px;
+  background-image: url('./assets/img/closebtn.png');
+  background-size: cover;
 }
 
 /* StoryPage */
@@ -99,9 +137,7 @@ a {
 }
 
 @media only screen and (min-width: 600px) {
-  #main {
-    padding: 24px;
-  }
+
   .logo2 {
     width: 88px;
     height:31px;
@@ -112,13 +148,13 @@ a {
   .card-image {
     background-position: center;
   }
-  .card-no-image {
-    height: 48px;
-  }
   .story-page-body {
     box-shadow: 0px 0px 15px rgba(29, 63, 106, .15);
   }
   .page-text-container {
     padding: 48px;
+  }
+  .title-bar {
+    padding-left: 48px;
   }
 }
