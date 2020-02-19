@@ -1,5 +1,4 @@
 import React from 'react'
-import { NoHeaderImage } from './cards/noheaderimage'
 import { HeaderImage } from './cards/headerimage'
 import ReactMarkdown from 'react-markdown'
 
@@ -26,7 +25,7 @@ export class StoryCard extends React.Component {
     mRight: '0px',
     corners: '12px',
     topMargin: '32px',
-    bodyText: this.props.story.shortbody,
+    fullStory: false,
     header: 'none',
     onOff: 'block',
     scrollPos: 0,
@@ -39,13 +38,10 @@ export class StoryCard extends React.Component {
 
   handleScroll = () => {
     let yPos = window.scrollY
-    console.log("hi " + yPos)
     if(yPos < -30) {
-      console.log("close it")
       this.closeHandler()
     }
     else if (yPos > 500) {
-        console.log("open title")
         this.setState({ headerTitlePos: '0px'})
     } else {
       this.setState({ headerTitlePos: '-60px'})
@@ -67,7 +63,6 @@ export class StoryCard extends React.Component {
       this.setState({ isOpen: false })
       this.props.action(false)
       this.closeCard()
-      window.scroll( {top: (this.state.scrollPos - 16), left: 0, behavior: 'smooth' })
     }
   }
 
@@ -78,11 +73,10 @@ export class StoryCard extends React.Component {
       mRight: '-24px',
       corners: '0px',
       topMargin: '0px',
-      bodyText: this.props.story.longbody,
+      fullStory: true,
       header: 'inline'
     })
-    console.log(this.state.scrollPos, this.state.imgHeight)
-    window.scroll( {top: 0, left: 0, behavior: 'smooth' })
+    window.scroll( {top: 0, left: 0})
     window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -93,10 +87,10 @@ export class StoryCard extends React.Component {
       mRight: '0px',
       corners: '12px',
       topMargin: '32px',
-      bodyText: this.props.story.shortbody,
+      fullStory: false,
       header: 'none'
     })
-    window.scrollTo({top: this.sectionRef.current.offsetTop, left: 0})
+    window.scroll( {top: (this.state.scrollPos - 16), left: 0})
     window.removeEventListener('scroll', this.handleScroll);
   }
 
@@ -110,29 +104,21 @@ export class StoryCard extends React.Component {
     if(this.props.parentHasOpen && !this.state.isOpen) {
       cardStyle = { display: 'none'}
     }
-    let headerStyle = {
-      display: this.state.header
-    }
-    let headerTitleStyle = {
-      top: this.state.headerTitlePos
-    }
     const { story } = this.props
     return (
-      <>
       <section className="card" style={cardStyle} onClick={this.openHandler} ref={this.sectionRef}>
         <HeaderImage imageName={story.image} height={this.state.imgHeight} corners={this.state.corners}/>
         <div className="card-text-container">
           <h6>{story.label}</h6>
           <h2>{story.title}</h2>
           <p className="card-author">By {story.author}</p>
-          <div className="body-text"><ReactMarkdown source={this.state.bodyText}/></div>
+          <div className="body-text"><ReactMarkdown source={this.state.fullStory ? story.longbody : story.shortbody }/></div>
         </div>
-        <div className="card-header" style={headerStyle}>
-          <div className="title-bar" style={headerTitleStyle}>{story.title}</div>
+        <div className="card-header" style={{display: this.state.header}}>
+          <div className="title-bar" style={{top: this.state.headerTitlePos}}>{story.title}</div>
           <div className="close-btn" onClick={this.closeHandler}></div>
         </div>
       </section>
-      </>
     )
   }
 
