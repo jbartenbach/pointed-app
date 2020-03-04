@@ -4,7 +4,7 @@ import data from './assets/data/top-stories.js';
 
 const StoryListPage = () => {
 
-  return (
+return (
     <StoryList stories={data} />
   )
 }

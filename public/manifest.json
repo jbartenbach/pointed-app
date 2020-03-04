@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Pointed Stories",
+  "name": "A place to read short stories. Simple.",
   "icons": [
     {
       "src": "favicon.ico",

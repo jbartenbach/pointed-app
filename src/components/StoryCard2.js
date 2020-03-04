@@ -1,9 +1,9 @@
 import React from 'react'
-import { HeaderImage } from './cards/headerimage'
-import ReactMarkdown from 'react-markdown'
+import { HeaderImage2 } from './cards/headerimage2'
+import RichTextToReact from 'rich-text-to-react';
 
 
-export class StoryCard extends React.Component {
+export class StoryCard2 extends React.Component {
 
   constructor(props) {
     super(props)
@@ -95,7 +95,8 @@ export class StoryCard extends React.Component {
   }
 
   render() {
-    console.log('storycard render')
+    const { story } = this.props
+    console.log('render storycard2 ' + story.author)
     let cardStyle = {
       marginLeft: this.state.mLeft,
       marginRight: this.state.mRight,
@@ -105,15 +106,16 @@ export class StoryCard extends React.Component {
     if(this.props.parentHasOpen && !this.state.isOpen) {
       cardStyle = { display: 'none'}
     }
-    const { story } = this.props
     return (
       <section className="card" style={cardStyle} onClick={this.openHandler} ref={this.sectionRef}>
-        <HeaderImage imageName={story.image} height={this.state.imgHeight} corners={this.state.corners}/>
+        <HeaderImage2 imageName={story.image} height={this.state.imgHeight} corners={this.state.corners}/>
         <div className="card-text-container">
           <h6>{story.label}</h6>
           <h2>{story.title}</h2>
           <p className="card-author">By {story.author}</p>
-          <div className="body-text"><ReactMarkdown source={this.state.fullStory ? story.longbody : story.shortbody }/></div>
+          <div className="body-text">
+            <RichTextToReact document={this.state.fullStory ? story.longbody : story.shortBody } />
+          </div>
         </div>
         <div className="card-header" style={{display: this.state.header}}>
           <div className="title-bar" style={{top: this.state.headerTitlePos}}>{story.title}</div>

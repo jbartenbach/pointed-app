@@ -1,33 +1,43 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import storyContent from './assets/data/top-stories.js'
-import ScrollToTop from './components/ScrollToTop'
-import { HeaderImage } from './components/cards/headerimage'
 
-const StoryPage = ({ match }) => {
-  const title = match.params.title;
-  const story = storyContent.find(story => story.title === title)
 
-  if (!story) return <h2>Story? What Story?</h2>
-  const hasNoImage =
-    <div className="story-page-no-image">
-      <div className="logo2"></div>
-    </div>
+export class StoryPage extends React.Component {
 
-  return (
-    <div id="story-page-main">
-      <ScrollToTop />
-      { !story.image ? hasNoImage : <HeaderImage imageName={story.image}/>}
-      <div className="page-text-container">
-        <h6>{story.label}</h6>
-        <h2>{story.title}</h2>
-        <p className="card-author">by {story.author}</p>
-        {story.longbody.map((paragraph, key) => (
-          <div className="body-text full-body" key={key}><ReactMarkdown source={paragraph} /></div>
-        ))}
-      </div>
-    </div>
-  )
+  constructor(props) {
+    super(props);
+    this.state = {
+      stories: {}
+    }
+  }
+
+  componentDidMount() {
+    console.log('mounted')
+    const contentful = require("contentful");
+    const client = contentful.createClient({
+      space: "o263y6np6fvz",
+      accessToken: "UeTem3T79BTpOFYAtYEBb9Ghfbk7bKBunmJut8Qju6I"
+    })
+    client.getEntries().then(({ items }) => {
+      this.setState({ stories: items });
+    });
+    // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
+    // client.getEntries()
+    //   .then(function (entries) {
+    //       this.setState({stories: 2})
+    //       entries.items.forEach(function (entry) {
+    //           if(entry.fields) {
+    //               console.log(entry.fields)
+    //           }
+    //       })
+    //   })
+  }
+
+  render() {
+    console.log('here')
+    return (
+      <div id="story-page-main">Title of something</div>
+    )
+  }
 }
 
 export default StoryPage
