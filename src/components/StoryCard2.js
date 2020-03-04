@@ -114,7 +114,7 @@ export class StoryCard2 extends React.Component {
           <h2>{story.title}</h2>
           <p className="card-author">By {story.author}</p>
           <div className="body-text">
-            <RichTextToReact document={this.state.fullStory ? story.longbody : story.shortBody } />
+            <RichTextToReact document={this.state.fullStory ? story.longBody : story.shortBody } />
           </div>
         </div>
         <div className="card-header" style={{display: this.state.header}}>
