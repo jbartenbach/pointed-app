@@ -7,7 +7,7 @@ const client = contentful.createClient({
   accessToken: process.env.REACT_APP_ACCESS_TOKEN
 });
 
-class StoryListPage2 extends React.Component {
+class StoriesPage extends React.Component {
 
   constructor() {
     super();
@@ -23,11 +23,10 @@ class StoryListPage2 extends React.Component {
   }
 
   render() {
-    console.log('render storylistpage2')
     return (
       <StoryList2 stories={this.state.stories} />
     )
   }
 }
 
-export default StoryListPage2
+export default StoriesPage

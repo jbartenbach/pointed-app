@@ -1,13 +1,11 @@
 body {
   margin: 0;
-    background-color: #F3F8FE;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: #F3F8FE;
+  font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #0B233F;
-  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
@@ -17,27 +15,31 @@ a {
 }
 
 #main {
-     margin: 0 auto;
-     max-width: 800px;
-     padding: 0px 24px 32px 24px;
+ margin: 0 auto;
+ max-width: 800px;
+ padding: 0px 24px 32px 24px;
 }
-.logo2 {
-  margin:0 auto 24px auto;
-  width: 63px;
-  height:22px;
-  background-image: url('./assets/img/logo2.svg');
-  background-size: 100%;
-  background-repeat: no-repeat;
 
-}
 .card {
   background-color: #FFF;
   border-radius: 12px;
   box-shadow: 0px 0px 15px rgba(29, 63, 106, .15);
-  margin-top: 32px;
+  margin: 32px 0px 0px 0px;
   transition: height .2s;
   position: relative;
 }
+.card.card-open {
+  margin: 0px -24px 0px -24px;
+  border-radius: 0px;
+}
+.card.card-off {
+  display: none;
+}
+
+/* marginLeft: this.state.mLeft,
+marginRight: this.state.mRight,
+borderRadius: this.state.corners,
+marginTop: this.state.topMargin */
 
 .card-no-image {
   height: 120px;
@@ -50,6 +52,10 @@ a {
   background-repeat: no-repeat;
   margin-bottom:20px;
   transition: height .2s;
+}
+.card-image.card-open {
+  height: 350px;
+  border-radius: 0px 0px 0px 0px;
 }
 .card-text-container {
   padding:24px;
@@ -78,10 +84,15 @@ a {
 }
 .card-header {
   position: fixed;
+  display: none;
+  /* background-color: #333; */
   top: 0px;
   width:100%;
   max-width: 800px;
   height:60px;
+}
+.card-header.card-open {
+  display: inline;
 }
 .title-bar {
   position: absolute;
@@ -94,7 +105,9 @@ a {
   padding-left: 24px;
   box-shadow: 0px 0px 15px rgba(29, 63, 106, .25);
   transition: top .2s;
-
+}
+.title-bar.scrolled {
+  top: 0px;
 }
 .close-btn {
   position: absolute;
