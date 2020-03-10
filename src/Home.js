@@ -44,7 +44,7 @@ class Home extends React.Component {
                   <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
                     <input type="text" name="b_bb35be9040f50a3c919d7eb92_2a3eee4fbd" tabIndex="-1" defaultValue=""></input>
                   </div>
-                  <div className="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="btn"></input></div>
+                  <div className="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="btn submit-btn"></input></div>
                 </div>
               </form>
             </div>
