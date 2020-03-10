@@ -14,6 +14,68 @@ a {
   color: inherit;
 }
 
+.btn {
+  padding:10px 24px;
+  border: 0;
+  background-color: #E5745C;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-transform:uppercase;
+}
+
+#logo {
+  width: 68px;
+  height: 22px;
+  margin: auto;
+  background-image: url('./assets/img/logo2.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 20px;
+}
+
+
+#home-header {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+#home-header-image {
+  width: 100%;
+  height: 250px;
+  background-image: url('./assets/img/header.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+#home-header-content {
+  text-align: center;
+  padding:40px 48px;
+}
+
+#home-header-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+#sign-up {
+  margin-top: 40px;
+}
+
+#sign-up .email {
+  max-width: 300px;
+  border: 1px solid #000;
+  background-color: inherit;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size:14px;
+  padding:12px 20px;
+}
+::placeholder {
+  color:#6C7989;
+}
+
 #main {
  margin: 0 auto;
  max-width: 800px;
@@ -147,6 +209,12 @@ marginTop: this.state.topMargin */
 
 @media only screen and (min-width: 600px) {
 
+
+  #home-header-content h2 {
+    display: block;
+    margin: 0px;
+    font-size: 32px;
+  }
   .logo2 {
     width: 88px;
     height:31px;
@@ -166,4 +234,13 @@ marginTop: this.state.topMargin */
   .title-bar {
     padding-left: 48px;
   }
+}
+
+@media only screen and (min-width: 800px) {
+
+    #home-header-content {
+      background-color: #FFFFFF;
+      border-radius: 0px 0px 12px 12px;
+      box-shadow: 0px 0px 15px rgba(29, 63, 106, .15);
+    }
 }

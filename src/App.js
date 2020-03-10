@@ -1,6 +1,6 @@
 import React from 'react';
-import StoryListPage from './StoryListPage'
 import StoriesPage from './StoriesPage'
+import Home from './Home'
 import {
   BrowserRouter as Router,
   Route
@@ -11,7 +11,7 @@ function App() {
 
     <Router>
     <div>
-      <Route exact path="/"><StoryListPage /></Route>
+      <Route exact path="/"><Home /></Route>
       <Route path="/stories" component={StoriesPage} />
     </div>
     </Router>

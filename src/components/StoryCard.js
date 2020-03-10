@@ -1,6 +1,6 @@
 import React from 'react'
 import { HeaderImage } from './cards/headerimage'
-import ReactMarkdown from 'react-markdown'
+import RichTextToReact from 'rich-text-to-react';
 
 
 export class StoryCard extends React.Component {
@@ -12,24 +12,10 @@ export class StoryCard extends React.Component {
     this.closeHandler = this.closeHandler.bind(this);
   }
 
-  static defaultProps = {
-    story: [
-      {image: "none", label: "Short Story", title: "Story", author: "Anonymous", shortbody: "Click the card to read" }
-    ]
-  }
-
   state = {
     isOpen: false,
-    imgHeight: '250px',
-    mLeft: '0px',
-    mRight: '0px',
-    corners: '12px',
-    topMargin: '32px',
-    fullStory: false,
-    header: 'none',
-    onOff: 'block',
-    scrollPos: 0,
-    headerTitlePos: '-60px'
+    isScrolled: false,
+    scrollPos: 0
   }
 
   componentDidMount() {
@@ -42,19 +28,18 @@ export class StoryCard extends React.Component {
       this.closeHandler()
     }
     else if (yPos > 500) {
-        this.setState({ headerTitlePos: '0px'})
+        this.setState({isScrolled: true})
     } else {
-      this.setState({ headerTitlePos: '-60px'})
+      this.setState({isScrolled: false})
     }
   }
 
   openHandler = () =>  {
     if(!this.state.isOpen) {
-      this.setState({
-        isOpen: true,
-      })
+      this.setState({ isOpen: true })
       this.props.action(true)
-      this.openCard()
+      window.scroll( {top: 0, left: 0})
+      window.addEventListener('scroll', this.handleScroll);
     }
   }
 
@@ -62,65 +47,37 @@ export class StoryCard extends React.Component {
     if(this.state.isOpen) {
       this.setState({ isOpen: false })
       this.props.action(false)
-      this.closeCard()
+      window.scroll( {top: (this.state.scrollPos - 16), left: 0})
+      window.removeEventListener('scroll', this.handleScroll);
     }
-  }
-
-  openCard = () => {
-    this.setState({
-      imgHeight: '350px',
-      mLeft: '-24px',
-      mRight: '-24px',
-      corners: '0px',
-      topMargin: '0px',
-      fullStory: true,
-      header: 'inline'
-    })
-    window.scroll( {top: 0, left: 0})
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  closeCard = () => {
-    this.setState({
-      imgHeight: '250px',
-      mLeft: '0px',
-      mRight: '0px',
-      corners: '12px',
-      topMargin: '32px',
-      fullStory: false,
-      header: 'none'
-    })
-    window.scroll( {top: (this.state.scrollPos - 16), left: 0})
-    window.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
-    console.log('storycard render')
-    let cardStyle = {
-      marginLeft: this.state.mLeft,
-      marginRight: this.state.mRight,
-      borderRadius: this.state.corners,
-      marginTop: this.state.topMargin,
-    }
-    if(this.props.parentHasOpen && !this.state.isOpen) {
-      cardStyle = { display: 'none'}
-    }
     const { story } = this.props
+    console.log('render storycard2 ' + story.author)
+    let cardStyles = ''
+    if(this.state.isOpen) {
+      cardStyles = 'card-open'
+    }
+    else if(this.props.parentHasOpen && !this.state.isOpen) {
+      cardStyles = 'card-off'
+    }
     return (
-      <section className="card" style={cardStyle} onClick={this.openHandler} ref={this.sectionRef}>
-        <HeaderImage imageName={story.image} height={this.state.imgHeight} corners={this.state.corners}/>
+      <section className={`card ${cardStyles}`}  onClick={this.openHandler} ref={this.sectionRef}>
+        <HeaderImage imageName={story.image} isOpen={this.state.isOpen}/>
         <div className="card-text-container">
           <h6>{story.label}</h6>
           <h2>{story.title}</h2>
           <p className="card-author">By {story.author}</p>
-          <div className="body-text"><ReactMarkdown source={this.state.fullStory ? story.longbody : story.shortbody }/></div>
+          <div className="body-text">
+            <RichTextToReact document={this.state.isOpen ? story.longBody : story.shortBody } />
+          </div>
         </div>
-        <div className="card-header" style={{display: this.state.header}}>
-          <div className="title-bar" style={{top: this.state.headerTitlePos}}>{story.title}</div>
+        <div className={`card-header ${cardStyles}`}>
+          <div className={`title-bar ${this.state.isScrolled && (' scrolled')}`}>{story.title}</div>
           <div className="close-btn" onClick={this.closeHandler}></div>
         </div>
       </section>
     )
   }
-
 }

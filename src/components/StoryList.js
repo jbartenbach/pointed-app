@@ -12,31 +12,23 @@ class StoryList extends React.Component {
     }
   }
 
-  static defaultProps = {
-    stories: [
-      {image: "none", label: "Short Story", title: "Story", author: "Anonymous", shortbody: "Click the card to read" }
-    ]
-  }
-
   handleClick(isOpen) {
     this.setState({ hasOpen: isOpen })
   }
 
   render() {
-    const { stories } = this.props
     return (
-        <div id="main">
-          { stories.map(
-            (story, i) =>
-              <StoryCard
-                story= {story}
-                key= {story.id}
-                action= {this.handleClick}
-                parentHasOpen= {this.state.hasOpen}
-              />
-          )}
-        </div>
-
+      <div id="main">
+        { this.props.stories.map(
+          (story, i) =>
+            <StoryCard
+              story= {story.fields}
+              key= {story.sys.id}
+              action= {this.handleClick}
+              parentHasOpen= {this.state.hasOpen}
+            />
+        )}
+      </div>
     );
   }
 }

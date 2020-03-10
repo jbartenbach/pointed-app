@@ -1,5 +1,5 @@
 import React from 'react'
-import StoryList2 from './components/StoryList2'
+import StoryList from './components/StoryList'
 
 const contentful = require('contentful')
 const client = contentful.createClient({
@@ -24,7 +24,10 @@ class StoriesPage extends React.Component {
 
   render() {
     return (
-      <StoryList2 stories={this.state.stories} />
+      <>
+      <div id="logo"></div>
+      <StoryList stories={this.state.stories} />
+      </>
     )
   }
 }
