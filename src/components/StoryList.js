@@ -14,6 +14,7 @@ class StoryList extends React.Component {
 
   handleClick(isOpen) {
     this.setState({ hasOpen: isOpen })
+    this.props.action(isOpen)
   }
 
   render() {

@@ -9,12 +9,14 @@ const client = contentful.createClient({
 
 class Home extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
-      stories: []
+      stories: [],
+      hasOpen: false
     }
-  };
+  }
 
   componentDidMount() {
     client.getEntries().then(({ items }) => {
@@ -22,10 +24,14 @@ class Home extends React.Component {
     });
   }
 
+  handleClick(isOpen) {
+    this.setState({ hasOpen: isOpen })
+  }
+
   render() {
     return (
       <>
-      <div id="home-header">
+      <div id="home-header" className={`${this.state.hasOpen && (' closed')}`}>
         <div id="home-header-image"></div>
         <div id="home-header-content">
           <h2>A simple way to enjoy great short stories</h2>
@@ -52,7 +58,7 @@ class Home extends React.Component {
         </div>
       </div>
 
-      <StoryList stories={this.state.stories} />
+      <StoryList stories={this.state.stories} action={this.handleClick} />
       </>
     )
   }

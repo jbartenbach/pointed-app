@@ -11,8 +11,10 @@ class StoriesPage extends React.Component {
 
   constructor() {
     super();
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
-      stories: []
+      stories: [],
+      hasOpen: false
     }
   };
 
@@ -22,11 +24,15 @@ class StoriesPage extends React.Component {
     });
   }
 
+  handleClick(isOpen) {
+    this.setState({ hasOpen: isOpen })
+  }
+
   render() {
     return (
       <>
-      <div id="logo"></div>
-      <StoryList stories={this.state.stories} />
+      {!this.state.hasOpen && <div id="logo"></div>}
+      <StoryList stories={this.state.stories} action={this.handleClick} />
       </>
     )
   }

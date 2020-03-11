@@ -54,7 +54,6 @@ export class StoryCard extends React.Component {
 
   render() {
     const { story } = this.props
-    console.log('render storycard2 ' + story.author)
     let cardStyles = ''
     if(this.state.isOpen) {
       cardStyles = 'card-open'

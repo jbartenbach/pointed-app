@@ -45,6 +45,9 @@ a {
   margin: 0 auto;
   max-width: 800px;
 }
+#home-header.closed {
+  display:none;
+}
 
 #home-header-image {
   width: 100%;
